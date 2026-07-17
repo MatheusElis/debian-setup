@@ -1,0 +1,128 @@
+return {
+  {
+    "folke/snacks.nvim",
+    priority = 1000,
+    lazy = false,
+    ---@type snacks.Config
+    opts = {
+      bigfile = { enabled = true },
+      dashboard = {
+        preset = {
+          pick = nil,
+          ---@type snacks.dashboard.Item[]
+          keys = {
+            { icon = " ", key = "f", desc = "Find File", action = ":lua Snacks.dashboard.pick('files')" },
+            { icon = " ", key = "n", desc = "New File", action = ":ene | startinsert" },
+            { icon = " ", key = "g", desc = "Find Text", action = ":lua Snacks.dashboard.pick('live_grep')" },
+            { icon = " ", key = "r", desc = "Recent Files", action = ":lua Snacks.dashboard.pick('oldfiles')" },
+            {
+              icon = " ",
+              key = "c",
+              desc = "Config",
+              action = ":lua Snacks.dashboard.pick('files', {cwd = vim.fn.stdpath('config')})",
+            },
+            { icon = " ", key = "s", desc = "Restore Session", section = "session" },
+            { icon = "󰒲 ", key = "l", desc = "Lazy", action = ":Lazy", enabled = package.loaded.lazy ~= nil },
+            { icon = " ", key = "q", desc = "Quit", action = ":qa" },
+          },
+          header = [[
+                     ██████╗ ██████╗ ███╗   ███╗██╗   ██╗██╗   ██╗██╗███╗   ███╗
+                    ██╔════╝██╔═══██╗████╗ ████║██║   ██║██║   ██║██║████╗ ████║
+                    ██║     ██║   ██║██╔████╔██║██║   ██║██║   ██║██║██╔████╔██║
+                    ██║     ██║   ██║██║╚██╔╝██║██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║
+                    ╚██████╗╚██████╔╝██║ ╚═╝ ██║╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║
+                     ╚═════╝ ╚═════╝ ╚═╝     ╚═╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝
+                       [ Proletarians of the World, Unite! ]
+                       ]],
+        },
+        sections = {
+          { section = "header" },
+          { section = "keys", indent = 1, padding = 1 },
+          { section = "recent_files", icon = " ", title = "Recent Files", indent = 3, padding = 2 },
+          { section = "startup" },
+        },
+      },
+      explorer = { enabled = true },
+      indent = { char = "." },
+      input = {
+        enabled = true,
+        icon = " ",
+        icon_hl = "SnacksInputIcon",
+        icon_pos = "left",
+        prompt_pos = "title",
+        win = { style = "input" },
+        expand = true,
+      },
+      notifier = {
+        enabled = true,
+        timeout = 3000,
+      },
+      picker = {
+        enabled = true,
+        sources = {
+          files = { hidden = true },
+        },
+      },
+      quickfile = { enabled = true },
+      scope = { enabled = true },
+      scroll = { enabled = false },
+      statuscolumn = { enabled = true },
+      words = { enabled = true },
+      toggle = {
+        enabled = true,
+        which_key = true,
+      },
+      styles = {
+        notification = {
+          wo = { wrap = true },
+        },
+      },
+    },
+    keys = {
+      -- Explorer
+      { "<leader>e", function() Snacks.explorer() end, desc = "Explorer" },
+      -- Picker: grep
+      { "<leader>fw", function() Snacks.picker.grep() end, desc = "Grep" },
+      { "<leader>:", function() Snacks.picker.command_history() end, desc = "Command History" },
+      { "<leader>sn", function() Snacks.picker.notifications() end, desc = "Search Notifications" },
+      -- Find
+      {
+        "<leader>o",
+        function()
+          Snacks.picker.buffers({
+            win = {
+              input = { keys = { ["dd"] = "bufdelete", ["<c-d>"] = { "bufdelete", mode = { "n", "i" } } } },
+              list = { keys = { ["dd"] = "bufdelete" } },
+            },
+          })
+        end,
+        desc = "Buffers",
+      },
+      { "<leader>fc", function() Snacks.picker.files({ cwd = vim.fn.stdpath("config") }) end, desc = "Find Config File" },
+      { "<leader>ff", function() Snacks.picker.files() end, desc = "Find Files" },
+      { "<leader>fg", function() Snacks.picker.git_files() end, desc = "Find Git Files" },
+      { "<leader>fp", function() Snacks.picker.projects() end, desc = "Projects" },
+      { "<leader>fr", function() Snacks.picker.recent() end, desc = "Recent" },
+      -- Grep
+      { "<leader>sb", function() Snacks.picker.lines() end, desc = "Buffer Lines" },
+      { "<C-s>", function() Snacks.picker.grep_buffers() end, desc = "Grep Open Buffers" },
+      { "<leader>sw", function() Snacks.picker.grep_word() end, desc = "Visual selection or word", mode = { "n", "x" } },
+      -- Search
+      { '<leader>s"', function() Snacks.picker.registers() end, desc = "Registers" },
+      { "<leader>s/", function() Snacks.picker.search_history() end, desc = "Search History" },
+      { "<leader>sd", function() Snacks.picker.diagnostics() end, desc = "Diagnostics" },
+      { "<leader>sD", function() Snacks.picker.diagnostics_buffer() end, desc = "Buffer Diagnostics" },
+      { "<leader>sk", function() Snacks.picker.keymaps() end, desc = "Keymaps" },
+      { "<leader>cR", function() Snacks.rename.rename_file() end, desc = "Rename File" },
+      -- LSP (via Snacks picker)
+      { "gd", function() Snacks.picker.lsp_definitions() end, desc = "Goto Definition" },
+      { "gr", function() Snacks.picker.lsp_references() end, nowait = true, desc = "References" },
+      { "gI", function() Snacks.picker.lsp_implementations() end, desc = "Goto Implementation" },
+      { "gy", function() Snacks.picker.lsp_type_definitions() end, desc = "Goto Type Definition" },
+      { "gai", function() Snacks.picker.lsp_incoming_calls() end, desc = "Calls Incoming" },
+      { "gao", function() Snacks.picker.lsp_outgoing_calls() end, desc = "Calls Outgoing" },
+      { "<leader>ss", function() Snacks.picker.lsp_symbols() end, desc = "LSP Symbols" },
+      { "<leader>sS", function() Snacks.picker.lsp_workspace_symbols() end, desc = "LSP Workspace Symbols" },
+    },
+  },
+}
