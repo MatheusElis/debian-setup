@@ -62,12 +62,14 @@ sudo apt install -y sway-notification-center                  # notification cen
 sudo apt install -y xdg-desktop-portal xdg-desktop-portal-wlr # screen sharing
 sudo apt install -y wlogout                                   # logout screen
 sudo apt install -y brightnessctl                             # control device brightness
+sudo apt install -y lxqt-policykit                            # policy authentication agent
 
 # Install usefull stuff
 sudo apt install -y tmux network-manager tlp kanshi \
     thunar thunar-archive-plugin thunar-volman \
     unzip libnotify-bin libnotify-dev libusb-0.1-4 \
-    lazygit
+    lazygit ripgrep fd-find pavucontrol \
+    network-manager-gnome
 
 sudo tlp start
 POWER_CONFIG='SUBSYSTEM=="power_supply", ATTR{status}=="Discharging", ATTR{capacity}=="[0-5]", RUN+="/usr/bin/systemctl suspend"'

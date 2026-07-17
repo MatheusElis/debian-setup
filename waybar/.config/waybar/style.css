@@ -2,7 +2,7 @@
 
 * {
   border: none;
-  font-family: "JetbrainsMono Nerd Font";
+  font-family: "JetBrainsMonoNL Nerd Font";
   font-size: 14px;
   min-height: 10px;
 }
@@ -25,7 +25,6 @@ window#waybar.hidden {
 #idle_inhibitor,
 #bluetooth,
 #pulseaudio,
-#pulseaudio-slider,
 #network,
 #tray,
 #backlight,
@@ -123,31 +122,6 @@ window#waybar.hidden {
   color: @peach;
 }
 
-#workspaces button.active:hover {}
-
-/* Modules right */
-#taskbar {
-  background: transparent;
-  border-radius: 10px;
-  padding: 0px 5px;
-  margin: 6px 5px;
-}
-
-#taskbar button {
-  padding: 0px 5px;
-  margin: 0px 3px;
-  border-radius: 6px;
-  transition: background 0.3s ease;
-}
-
-#taskbar button.active {
-  background: rgba(34, 36, 54, 0.5);
-}
-
-#taskbar button:hover {
-  background: rgba(34, 36, 54, 0.5);
-}
-
 #idle_inhibitor {
   color: @base;
   background: @mauve;
@@ -170,14 +144,6 @@ window#waybar.hidden {
   color: @base;
   background: @sapphire;
 }
-#pulseaudio-slider {
-  color: #1A1826;
-  background: #E8A2AF;
-  min-width: 50px;
-}
-
-#pulseaudio-slider slider {}
-
 
 #network {
   color: @base;
@@ -191,13 +157,4 @@ window#waybar.hidden {
 #backlight {
   color: @base;
   background: @teal;
-}
-
-
-/* === Optional animation === */
-@keyframes blink {
-  to {
-    background-color: #BF616A;
-    color: #B5E8E0;
-  }
 }
