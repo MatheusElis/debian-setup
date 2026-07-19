@@ -139,7 +139,7 @@ if ! grep -Fq "$MISE_ACTIVATE" "$ZSHRC_FILE"; then
 fi
 
 stow fonts
-sudo fc-cache -rs
+sudo fc-cache -f -v
 
 stow alacritty
 
