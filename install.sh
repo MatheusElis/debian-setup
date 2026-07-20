@@ -71,7 +71,8 @@ sudo apt install -y tmux network-manager tlp kanshi \
     unzip libnotify-bin libnotify-dev libusb-0.1-4 \
     lazygit ripgrep fd-find pavucontrol \
     network-manager-gnome playerctl fonts-noto-color-emoji \
-    bibata-cursor-theme papirus-icon-theme
+    bibata-cursor-theme papirus-icon-theme \
+    gvfs gvfs-backends xarchiver udiskie btop
 
 # Install media applications
 sudo apt install -y imv mpv zathura zathura-pdf-poppler evince

@@ -29,6 +29,10 @@ blueman-applet &
 pkill -x lxqt-policykit-agent
 lxqt-policykit-agent &
 
+## Auto-mount de dispositivos USB
+pkill -x udiskie
+udiskie --tray --notify &
+
 ## Dynamic monitor profile manager
 pkill -x kanshi
 kanshi &
