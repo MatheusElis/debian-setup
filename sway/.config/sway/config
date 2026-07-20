@@ -1,7 +1,7 @@
 # Matheus Elis Sway Config
 
-# 1. Set a wallpaper on every monitor
-output * bg ~/.wallpaper/5qs71paaaic71.png fill
+# 1. Set a wallpaper on every monitor (managed by theme-toggle.sh)
+output * bg /home/elis/.config/sway/wallpapers/debian-black-4k.png fill
 
 # 2. Include our custom modules
 include "${XDG_CONFIG_HOME:-$HOME/.config}/sway/config.d/*.conf"

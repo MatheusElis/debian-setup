@@ -22,5 +22,13 @@ systemctl --user restart wireplumber
 pkill -x nm-applet
 nm-applet &
 
+## Bluetooth applet (provides tray icon and device management)
+pkill -x blueman-applet
+blueman-applet &
+
 pkill -x lxqt-policykit-agent
 lxqt-policykit-agent &
+
+## Dynamic monitor profile manager
+pkill -x kanshi
+kanshi &

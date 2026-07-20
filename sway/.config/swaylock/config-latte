@@ -1,0 +1,17 @@
+image=~/.config/sway/wallpapers/debian-magenta-blue-1920x1080.png
+scaling=fill
+inside-color=eff1f5
+ring-color=1e66f5
+key-hl-color=40a02b
+line-color=00000000
+separator-color=00000000
+text-color=4c4f69
+inside-ver-color=eff1f5
+ring-ver-color=fe640b
+text-ver-color=4c4f69
+inside-wrong-color=eff1f5
+ring-wrong-color=d20f39
+text-wrong-color=d20f39
+inside-clear-color=eff1f5
+ring-clear-color=40a02b
+text-clear-color=40a02b
